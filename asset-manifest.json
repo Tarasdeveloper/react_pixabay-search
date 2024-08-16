@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react_pixabay-search/static/css/main.ab46cb25.css",
+    "main.js": "/react_pixabay-search/static/js/main.be2f836f.js",
+    "index.html": "/react_pixabay-search/index.html",
+    "main.ab46cb25.css.map": "/react_pixabay-search/static/css/main.ab46cb25.css.map",
+    "main.be2f836f.js.map": "/react_pixabay-search/static/js/main.be2f836f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab46cb25.css",
+    "static/js/main.be2f836f.js"
+  ]
+}
