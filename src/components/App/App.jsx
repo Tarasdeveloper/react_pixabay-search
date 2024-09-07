@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,6 +32,8 @@ function App() {
   const [isLoader, setIsLoader] = useState(false);
   const [visibleBtn, setVisibleBtn] = useState(false);
 
+  const uniqueIds = useRef(new Set());
+
   useEffect(() => {
     if (!searchValue) return;
 
@@ -51,7 +53,17 @@ function App() {
           return;
         }
 
-        setImages(prevImages => [...prevImages, ...hits]);
+        // Filter out images with duplicate IDs
+        const uniqueHits = hits.filter(hit => {
+          if (uniqueIds.current.has(hit.id)) {
+            return false; // Skip this image
+          } else {
+            uniqueIds.current.add(hit.id);
+            return true; // Include this image
+          }
+        });
+
+        setImages(prevImages => [...prevImages, ...uniqueHits]);
         setVisibleBtn(page < Math.ceil(totalHits / perPage));
         toast.success('Pictures were successfully loaded!', toastConfig);
       } catch (error) {
@@ -68,6 +80,7 @@ function App() {
     setSearchValue(newSearchValue);
     setPage(1);
     setImages([]);
+    uniqueIds.current.clear(); // Clear the set when starting a new search
   };
 
   const loadMore = () => {
