@@ -11,7 +11,7 @@ import Modal from 'components/Modal/Modal';
 import { Loader } from 'components/Loader/Loader';
 // import icon from '../../icons/search.svg';
 
-const toastConfig = {
+export const toastConfig = {
   position: 'top-center',
   autoClose: 2000,
   hideProgressBar: false,
