@@ -32,6 +32,7 @@ function App() {
   const [isLoader, setIsLoader] = useState(false);
   const [visibleBtn, setVisibleBtn] = useState(false);
 
+  // Set to track unique IDs
   const uniqueIds = useRef(new Set());
 
   useEffect(() => {
@@ -80,7 +81,7 @@ function App() {
     setSearchValue(newSearchValue);
     setPage(1);
     setImages([]);
-    uniqueIds.current.clear(); // Clear the set when starting a new search
+    uniqueIds.current.clear(); //Clear the set when starting a new search
   };
 
   const loadMore = () => {
